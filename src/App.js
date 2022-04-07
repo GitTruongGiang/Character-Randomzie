@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Avatar from "./componer/Avatar";
+import PartListAvatar from "./componer/PartListAvatar";
 const total = {
   body: 17,
   eyes: 17,
@@ -11,15 +13,6 @@ const total = {
   clothing2: 5,
   clothing3: 9,
 };
-let partBody = [];
-let partEyes = [];
-let partHair = [];
-let partMouth = [];
-let partEyebrows = [];
-let partGlasses = [];
-let partClothing1 = [];
-let partClothing2 = [];
-let partClothing3 = [];
 function App() {
   const [body, setBody] = useState(1);
   const [eyes, setEyes] = useState(1);
@@ -44,132 +37,6 @@ function App() {
   useEffect(() => {
     randomize();
   }, []);
-  useEffect(() => {
-    for (let i = 1; i < total.body; i++) {
-      partBody.push(
-        <div key={i} className="square">
-          <img
-            src={`https://character-customization.netlify.app/character/body/${i}.png`}
-            alt=""
-            height={60}
-            onClick={() => setBody(i)}
-          />
-        </div>
-      );
-    }
-  }, []);
-  useEffect(() => {
-    for (let i = 1; i < total.eyes; i++) {
-      partEyes.push(
-        <div key={i} className="square">
-          <img
-            src={`https://character-customization.netlify.app/character/eyes/${i}.png`}
-            alt=""
-            height={60}
-            onClick={() => setEyes(i)}
-          />
-        </div>
-      );
-    }
-  }, []);
-  useEffect(() => {
-    for (let i = 1; i < total.hair; i++) {
-      partHair.push(
-        <div key={i} className="square">
-          <img
-            src={`https://character-customization.netlify.app/character/hair/${i}.png`}
-            alt=""
-            height={60}
-            onClick={() => setHair(i)}
-          />
-        </div>
-      );
-    }
-  }, []);
-  useEffect(() => {
-    for (let i = 1; i < total.mouth; i++) {
-      partMouth.push(
-        <div key={i} className="square">
-          <img
-            src={`https://character-customization.netlify.app/character/mouths/${i}.png`}
-            alt=""
-            height={60}
-            onClick={() => setMouth(i)}
-          />
-        </div>
-      );
-    }
-  }, []);
-  useEffect(() => {
-    for (let i = 1; i < total.eyebrows; i++) {
-      partEyebrows.push(
-        <div key={i} className="square">
-          <img
-            src={`https://character-customization.netlify.app/character/eyebrows/${i}.png`}
-            alt=""
-            height={60}
-            onClick={() => setEyebrow(i)}
-          />
-        </div>
-      );
-    }
-  }, []);
-  useEffect(() => {
-    for (let i = 1; i < total.glasses; i++) {
-      partGlasses.push(
-        <div key={i} className="square">
-          <img
-            src={`https://character-customization.netlify.app/character/accessories/glasses/${i}.png`}
-            alt=""
-            height={60}
-            onClick={() => setGlasses(i)}
-          />
-        </div>
-      );
-    }
-  }, []);
-  useEffect(() => {
-    for (let i = 1; i < total.clothing1; i++) {
-      partClothing1.push(
-        <div key={i} className="square">
-          <img
-            src={`https://character-customization.netlify.app/character/clothes/layer_1/${i}.png`}
-            alt=""
-            height={60}
-            onClick={() => setClothing1(i)}
-          />
-        </div>
-      );
-    }
-  }, []);
-  useEffect(() => {
-    for (let i = 1; i < total.clothing2; i++) {
-      partClothing2.push(
-        <div key={i} className="square">
-          <img
-            src={`https://character-customization.netlify.app/character/clothes/layer_2/${i}.png`}
-            alt=""
-            height={60}
-            onClick={() => setClothing2(i)}
-          />
-        </div>
-      );
-    }
-  }, []);
-  useEffect(() => {
-    for (let i = 1; i < total.clothing3; i++) {
-      partClothing3.push(
-        <div key={i} className="square">
-          <img
-            src={`https://character-customization.netlify.app/character/clothes/layer_3/${i}.png`}
-            alt=""
-            height={60}
-            onClick={() => setClothing3(i)}
-          />
-        </div>
-      );
-    }
-  }, []);
   return (
     <div className="App">
       <div className="title">CHARACTER</div>
@@ -178,69 +45,17 @@ function App() {
       <div className="avatar-group gap-30">
         <div>
           <div className="avatar-wrapper">
-            <div className="avatar">
-              <img
-                src={`https://character-customization.netlify.app/character/body/${body}.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 0, position: "absolute", left: 0, top: 0 }}
-                key={1}
-              />
-              <img
-                src={`https://character-customization.netlify.app/character/eyes/${eyes}.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 1, position: "absolute", left: 0, top: 0 }}
-              />
-              <img
-                src={`https://character-customization.netlify.app/character/hair/${hair}.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 6, position: "absolute", left: 0, top: 0 }}
-              />
-              <img
-                src={`https://character-customization.netlify.app/character/clothes/layer_1/${clothing1}.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 2, position: "absolute", left: 0, top: 0 }}
-              />
-              <img
-                src={`https://character-customization.netlify.app/character/clothes/layer_2/${clothing2}.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 3, position: "absolute", left: 0, top: 0 }}
-              />
-              <img
-                src={`https://character-customization.netlify.app/character/clothes/layer_3/${clothing3}.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 4, position: "absolute", left: 0, top: 0 }}
-              />
-              <img
-                src={`https://character-customization.netlify.app/character/mouths/${mouth}.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 4, position: "absolute", left: 0, top: 0 }}
-              />
-              <img
-                src={`https://character-customization.netlify.app/character/noses/1.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 4, position: "absolute", left: 0, top: 0 }}
-              />
-              <img
-                src={`https://character-customization.netlify.app/character/eyebrows/${eyebrows}.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 4, position: "absolute", left: 0, top: 0 }}
-              />
-              <img
-                src={`https://character-customization.netlify.app/character/accessories/glasses/${glasses}.png`}
-                alt=""
-                width={260}
-                style={{ zIndex: 5, position: "absolute", left: 0, top: 0 }}
-              />
-            </div>
+            <Avatar
+              body={body}
+              eyes={eyes}
+              hair={hair}
+              clothing1={clothing1}
+              clothing2={clothing2}
+              clothing3={clothing3}
+              mouth={mouth}
+              eyebrows={eyebrows}
+              glasses={glasses}
+            />
             <div className="text-center">
               <button className="button" onClick={() => randomize()}>
                 Randomize!
@@ -251,39 +66,59 @@ function App() {
         <div>
           <div className="list-section">
             <h2>Body</h2>
-            <div className="list">{partBody}</div>
+            <PartListAvatar total={total.body} set={setBody} path="body" />
           </div>
           <div className="list-section">
             <h2>Eyes</h2>
-            <div className="list">{partEyes}</div>
+            <PartListAvatar total={total.eyes} set={setEyes} path="eyes" />
           </div>
           <div className="list-section">
             <h2>Hair</h2>
-            <div className="list">{partHair}</div>
+            <PartListAvatar total={total.hair} set={setHair} path="hair" />
           </div>
           <div className="list-section">
             <h2>Mouth</h2>
-            <div className="list">{partMouth}</div>
+            <PartListAvatar total={total.mouth} set={setMouth} path="mouths" />
           </div>
           <div className="list-section">
             <h2>Eyebrows</h2>
-            <div className="list">{partEyebrows}</div>
+            <PartListAvatar
+              total={total.eyebrows}
+              set={setEyebrow}
+              path="eyebrows"
+            />
           </div>
           <div className="list-section">
             <h2>Glasses</h2>
-            <div className="list">{partGlasses}</div>
+            <PartListAvatar
+              total={total.glasses}
+              set={setGlasses}
+              path="accessories/glasses"
+            />
           </div>
           <div className="list-section">
             <h2>Clothing (L1)</h2>
-            <div className="list">{partClothing1}</div>
+            <PartListAvatar
+              total={total.clothing1}
+              set={setClothing1}
+              path="clothes/layer_1"
+            />
           </div>
           <div className="list-section">
             <h2>Clothing (L2)</h2>
-            <div className="list">{partClothing2}</div>
+            <PartListAvatar
+              total={total.clothing2}
+              set={setClothing2}
+              path="clothes/layer_2"
+            />
           </div>
           <div className="list-section">
             <h2>Clothing (L3)</h2>
-            <div className="list">{partClothing3}</div>
+            <PartListAvatar
+              total={total.clothing3}
+              set={setClothing3}
+              path="clothes/layer_3"
+            />
           </div>
         </div>
       </div>
